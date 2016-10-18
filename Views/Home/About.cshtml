@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ShopV2.ViewModels.ItemCardGroup>
+
+@{
+    ViewBag.Title = "Student Body Statistics";
+}
+
+<table>
+    <tr>
+        <th>
+            barCode
+        </th>
+        <th>
+            itemCard count
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.barCode)
+            </td>
+            <td>
+                @item.itemCardsCount
+            </td>
+        </tr>
+    }
+</table>

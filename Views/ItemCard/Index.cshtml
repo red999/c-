@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ShopV2.Models.ItemCard>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create v2", "Create", "ItemCardCreate")
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("searchString")
+        <input type="submit" value="search" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+           @* @Html.DisplayNameFor(model => model.name) *@
+            @Html.ActionLink("name", "Index", new { sortOrder = ViewBag.nameSortParm })
+        </th>
+        <th>
+           @* @Html.DisplayNameFor(model => model.measureType) *@
+            @Html.ActionLink("measure", "Index", new { sortOrder = ViewBag.measureSortParm })
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.nomenclatureNumber) *@
+            @Html.ActionLink("nominclatureNum", "Index", new { sortOrder = ViewBag.nomnumSortParm })
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.articularNumber) *@
+            @Html.ActionLink("articularNum", "Index", new { sortOrder = ViewBag.articulnumSortParm})
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.barCode) *@
+            @Html.ActionLink("barCode", "Index", new { sortOrder = ViewBag.barcodeSortParm})
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.measureType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomenclatureNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.articularNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.barCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

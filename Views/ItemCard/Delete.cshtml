@@ -1,0 +1,64 @@
+﻿@model ShopV2.Models.ItemCard
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ItemCard</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.measureType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.measureType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nomenclatureNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomenclatureNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.articularNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.articularNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.barCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.barCode)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

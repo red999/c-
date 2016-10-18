@@ -1,0 +1,168 @@
+﻿@model ShopV2.Models.ItemCard
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ItemCard</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.measureType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.measureType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nomenclatureNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomenclatureNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.articularNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.articularNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.barCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.barCode)
+        </dd>
+
+        @*BEGIN packageinfo*@
+        
+        <dd>
+            <h3>Package info</h3>
+            <table class="table">
+                <tr>
+                    <th>type</th>
+                    <th>count
+                    </th>
+                </tr>
+                @foreach (var item in Model.PackageInfos)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PackageType.typeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.count)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+        @*END packageinfos*@
+
+        @* Begin changeiteminfos *@
+        <dd>
+            <h3>changed information of item</h3>
+            <table class="table">
+                <tr>
+                    <th>name</th>
+                    <th>date</th>
+                    <th>price</th>
+                </tr>
+                @foreach (var item in Model.ChangeItemInfos)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ItemCard.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.price)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+        @* END changeiteminfos *@
+
+        @* Begin incomingItems *@
+        <dd>
+            <h3>Incoming items</h3>
+            <table class="table">
+                <tr>
+                    <th>firm name</th>
+                    <th>date</th>
+                    <th>quantity</th>
+                </tr>
+                @foreach (var item in Model.IncomingItems)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Vendor.firmNameORsellerName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.quantity)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+        @* END changeiteminfos *@
+
+        @*BEGIN outcomingitems*@
+        <dd>
+            <h3>Outcoming items</h3>
+            <table class="table">
+                <tr>
+                    <th>itemcard id</th>
+                    <th>date</th>
+                    <th>quantity</th>
+                    <th>firm</th>
+                </tr>
+                @foreach (var item in Model.OutcomingItems)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ItemCardID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.quantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Buyer.firmNameORsellerName)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+        @*END outcomingitems*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
